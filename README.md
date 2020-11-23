@@ -43,6 +43,11 @@ Se instala vía npm install, incluye ejecutable para ser requerido en la línea 
 $ npm install https://github.com/adbarquitectura/SCL014-md-links --save 
 ```
 
+##### node.js global:
+```js
+$ npm install -g https://github.com/adbarquitectura/SCL014-md-links 
+```
+
 ### Carga y configuración del módulo
 
 #### JavaScript API
@@ -58,8 +63,7 @@ mdLinks(path, options);
 
 * `path`: Ruta de archivo o directorio.
 * `options`: Un objeto con las siguientes propiedades:
-  - `validate`: Booleano que determina si se desea validar los links
-    encontrados.
+  - `validate`: Booleano que determina si se desea validar los links encontrados.
   - `stats`: Booleano que entrega la estadística de los links
     encontrados.
 
@@ -104,11 +108,15 @@ mdLinks("./some/dir")
 md-links <path-to-file> [options]
 ```
 
+```js
+npx md-links <path-to-file> [options]
+```
+
 #### Options
 
 ##### `--validate`
 
-La opción `--validate`, el módulo realiza una petición HTTP para
+La opción `--validate`, realiza una petición HTTP para
 averiguar si el link funciona o no. 
 
 Por ejemplo:
@@ -122,8 +130,7 @@ $ md-links ./some/example.md --validate
 
 ##### `--stats`
 
-La opción `--stats` el output (salida) será un texto con estadísticas
-básicas sobre los links.
+La opción `--stats`, el output (salida) será un texto con estadísticas básicas sobre los links.
 
 ```sh
 $ md-links ./some/example.md --stats
@@ -131,8 +138,7 @@ Total: 3
 Unique: 3
 ```
 
-Pu combinar `--stats` y `--validate` para obtener estadísticas que
-necesiten de los resultados de la validación.
+Pu combinar `--stats` y `--validate` para obtener estadísticas que necesiten de los resultados de la validación.
 
 ```sh
 $ md-links ./some/example.md --stats --validate
@@ -144,42 +150,47 @@ Broken: 1
 
 ## 4. Planificación y Desarrollo
 
+Este proyecto se realizó de manera individual, para el desarrollo de esta librería, se utilizaron diferentes herramientas de planificación y ejecución, partiendo desde la determinación de actividades generales, ordenadas en un [tablero](https://trello.com/b/0tU3SAY9) utilizando el **modelo canvas**, hasta determinar el **flujograma** según el requerimiento inicial. 
+
+*Flujograma*
 ![Flujo ](./assets/images/flujo.png)
 
-* Este proyecto se realizó de manera individual.
 
-* La librería y script ejecutable (herramienta de línea de comando -
-  CLI) debe estar implementada en JavaScript para ser ejecutada con
-  Node.js. **Está permitido usar librerías externas**.
+![trello ](./assets/images/trello1.png)
+![Flujo ](./assets/images/trello2.png)
+
+Igualmente se determinaron **milestones** e **issues** asociados a cada uno. 
+
+![milestone ](./assets/images/milestone.png)
 
 ## 5. Checklist
 
 ### General
 
-* [ ] Puede instalarse via `npm install --global <github-user>/md-links`
+* [X] Puede instalarse via `npm install --global <github-user>/md-links`
 
 ### `README.md`
 
-* [&check] Un board con el backlog para la implementación de la librería.
-* [ ] Documentación técnica de la librería.
-* [ ] Guía de uso e instalación de la librería
+* [X] Un board con el backlog para la implementación de la librería.
+* [X] Documentación técnica de la librería.
+* [X] Guía de uso e instalación de la librería
 
 ### API `mdLinks(path, opts)`
 
-* [ ] El módulo exporta una función con la interfaz (API) esperada.
-* [ ] Implementa soporte para archivo individual
-* [ ] Implementa soporte para directorios
-* [ ] Implementa `options.validate`
+* [X] El módulo exporta una función con la interfaz (API) esperada.
+* [X] Implementa soporte para archivo individual
+* [X] Implementa soporte para directorios
+* [X] Implementa `options.validate`
 
 ### CLI
 
-* [ ] Expone ejecutable `md-links` en el path (configurado en `package.json`)
-* [ ] Se ejecuta sin errores / output esperado
-* [ ] Implementa `--validate`
-* [ ] Implementa `--stats`
+* [X] Expone ejecutable `md-links` en el path (configurado en `package.json`)
+* [X] Se ejecuta sin errores / output esperado
+* [X] Implementa `--validate`
+* [X] Implementa `--stats`
 
 ### Pruebas / tests
 
-* [ ] Pruebas unitarias cubren un mínimo del 70% de statements, functions,
+* [X] Pruebas unitarias cubren un mínimo del 70% de statements, functions,
   lines, y branches.
 * [ ] Pasa tests (y linters) (`npm test`).
