@@ -1,20 +1,11 @@
-// Modulo debe recibir y  Ejecutar mdLinks(path, options)
-const { readFileMod } = require('./readFile-module');
+const pathModule = require('./modules/path-module.js');
+const printArrayLinks = require('./modules/printers/printArrayLinks.js');
+const checkIfItIsFileOrDirectory = require('./modules/checkIfItIsFileOrDirectory.js');
 
-const pathIn = process.argv[2];
-const optionIn = process.argv[3];
-
-readFileMod(pathIn);
-
-/* module.exports = () => {
-
-}; */
-
-
-
-// CONSIDERAR
-// si el argumento en la posicion[2] no es una url 
-// si el arqumento en la posicion[3] no es validate ni stats
-// si la ruta es un directorio 
-
-
+// Function should Read file or directory and executed each module
+module.exports = ((pathIn, argumentOption) => {
+    return pathModule(pathIn)
+        .then((resp) => checkIfItIsFileOrDirectory(resp, pathIn, argumentOption))
+        .then((arrayLinks) => printArrayLinks(arrayLinks, argumentOption, pathIn))
+        .catch(error => console.log('Error:  ' + error));
+});
