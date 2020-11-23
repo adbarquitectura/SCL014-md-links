@@ -1,8 +1,13 @@
 const printValidateAndStatFunction = require('./printValidateAndStatFunction.js');
 
 module.exports = (arrayLinks, argumentOption, pathIn) => {
-    arrayLinks.forEach(arrayFileMd => {
-        printValidateAndStatFunction(arrayFileMd, argumentOption, pathIn);
+     if (argumentOption === undefined) {
+        return arrayLinks;
+    }
+    const newArray = arrayLinks.map(arrayFileMd => {
+        return printValidateAndStatFunction(arrayFileMd, argumentOption, pathIn);
     });
-    return arrayLinks;
+    return Promise.all(newArray).then(resp => {
+        return resp;
+    });
 };
