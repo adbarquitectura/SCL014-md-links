@@ -138,7 +138,7 @@ Total: 3
 Unique: 3
 ```
 
-Pu combinar `--stats` y `--validate` para obtener estadísticas que necesiten de los resultados de la validación.
+Podrá combinar `--stats` y `--validate` para obtener estadísticas que necesiten de los resultados de la validación.
 
 ```sh
 $ md-links ./some/example.md --stats --validate
